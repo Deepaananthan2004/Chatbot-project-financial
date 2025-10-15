@@ -40,7 +40,7 @@ HTML_TEMPLATE = '''
 def ask_groq(prompt, context_text):
     try:
         response = client.chat.completions.create(
-            model="grok-1",
+            model="openai/gpt-oss-20b",
             messages=[
                 {"role": "system", "content": "You are a helpful financial assistant. Answer queries based on the provided financial data."},
                 {"role": "user", "content": f"Data: {context_text}\n\nQuestion: {prompt}"}
@@ -80,4 +80,5 @@ def home():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
+
     app.run(host="0.0.0.0", port=port, debug=True)
